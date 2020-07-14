@@ -13,8 +13,12 @@ router.get('/:id', adminController.getById);
 /* toggle favorite by id. */
 router.post('/:id/favorite', authenticateJWT, adminController.toggleFavorite);
 
+/* this will handle search by name. */
+router.get('/name/:name', adminController.getByName);
+
 /* search query by page, limit, name and filter by. */
-router.get('/search/:page&:limit&:name&:filter_by', authenticateJWT, adminController.search);
+/* this will handle search by types list. */
+router.get('/types/:types', adminController.getByTypes);
 
 /* this will handle search by name and types list. */
 router.get('/', async function(req, res, next) {

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const postSchema = new Schema({
+const pokemonsSchema = new Schema({
     id: {
         type: String,
         required: true
@@ -51,7 +51,9 @@ const postSchema = new Schema({
     }
 });
 
-postSchema.index({ types: 1 }, { sparse: true });
-postSchema.index({ favorite: 1 }, { sparse: true });
+pokemonsSchema.index({ types: 1 }, { sparse: true });
+pokemonsSchema.index({ favorite: 1 }, { sparse: true });
+pokemonsSchema.index({ name: 1 }, { sparse: true });
+pokemonsSchema.index({ id: 1 }, { sparse: true });
 
-module.exports = mongoose.model('Post', postSchema);
+module.exports = mongoose.model('Pokemon', pokemonsSchema);
