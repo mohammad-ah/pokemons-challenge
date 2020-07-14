@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'node_modules', 'public')));
 /**
  * Routing
  */
-app.use('/pokemon', adminRouter);
+app.use('/pokemons', adminRouter);
 
 /**
  * error handling
