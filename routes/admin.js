@@ -4,10 +4,6 @@ const adminController = require('../controller/admin');
 const authenticateJWT = require('../middlewares/authenticateJWT');
 const generateToken = require('../middlewares/generateToken')
 
-/* Get filters. */
-// router.param('name', adminController.getFiltered);
-
-
 /* init DB */
 router.post('/init', authenticateJWT, adminController.initDb);
 
