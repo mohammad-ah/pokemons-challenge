@@ -29,13 +29,12 @@ app.set('port', port);
  * connect to DB
  */
 
-db.connect
+var connection = db.connect
     .then(() => {
         let connection = app.listen(port, () => {
             console.log('Server is running on', port);
         });
-        let socket = socketio(connection);
-        new notifications(this.app, socket).routesConfig();    })
+    })
     .catch(err => console.log(err));
 
 /**
@@ -49,3 +48,5 @@ db.connect
 //     : 'port ' + addr.port;
 //   debug('Listening on ' + bind);
 // }
+
+module.exports.connection = connection;
