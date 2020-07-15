@@ -1,0 +1,248 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample server Pokemon Store.",
+    "version": "1.0.5",
+    "title": "Swagger Pokemon Store",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000/",
+  "basePath": "",
+  "tags": [
+    {
+      "name": "Pokemon",
+      "description": "Everything about your Pokemons",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/pokemons/{pokemonId}": {
+      "get": {
+        "tags": [
+          "pokemon"
+        ],
+        "summary": "get pokemon by id",
+        "description": "",
+        "operationId": "pokemonId",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "pokemonId",
+            "in": "path",
+            "description": "ID of pokemon to get",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/pokemons": {
+      "get": {
+        "tags": [
+          "pokemon"
+        ],
+        "summary": "Search pokemons",
+        "description": "",
+        "operationId": "searchPokemons",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "URL",
+            "name": "name",
+            "description": "Pokemon name",
+            "required": false
+          },
+          {
+            "in": "URL",
+            "name": "skip",
+            "description": "result skip",
+            "required": false
+          },
+          {
+            "in": "URL",
+            "name": "limit",
+            "description": "result limit",
+            "required": false
+          },
+          {
+            "in": "URL",
+            "name": "types",
+            "description": "types filter",
+            "required": false
+          },
+          {
+            "in": "URL",
+            "name": "favorite",
+            "description": "favorites filter",
+            "required": false
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/pokemons/name/{name}": {
+      "get": {
+        "tags": [
+          "pokemon"
+        ],
+        "summary": "Finds Pokemon by name",
+        "description": "Finds Pokemon by name",
+        "operationId": "findPokemonByName",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Status values that need to be considered for filter",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/pokemons/types/{types}": {
+      "get": {
+        "tags": [
+          "pokemon"
+        ],
+        "summary": "Finds Pokemon by type",
+        "description": "Finds Pokemon by type",
+        "operationId": "findPokemonByTypes",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Status values that need to be considered for filter",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/pokemons/{pokemonId}/favorite": {
+      "post": {
+        "tags": [
+          "pokemon"
+        ],
+        "summary": "Change pokemon favorite",
+        "description": "Returns a single pokemon",
+        "operationId": "updatePokemonFavorite",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "pokemonId",
+            "in": "path",
+            "description": "ID of pokemon to update",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "mark",
+            "in": "body",
+            "description": "true, or false",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pokemon not found"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
