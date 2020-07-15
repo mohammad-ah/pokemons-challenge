@@ -121,7 +121,7 @@ async function generalQuery (req, res, next) {
         let limit = parseInt(req.query.limit);
         let skip = parseInt(req.query.skip);
         let favorite = req.query.favorite;
-        console.log(favorite)
+
         let types = req.query.types;
         let pokemons;
 
