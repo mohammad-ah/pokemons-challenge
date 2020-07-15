@@ -80,7 +80,16 @@ GET /pokemons?:name&:limit&:skip&:types&:favorite
 POST: /pokemons/login
 ```
 #### You can login first to get a token and then use it with other APIs
+ 
+----------------
+ 
+> ## **Addition, Swagger is integrated to document APIs**
 
+Though the documentation needs a bit of extra work but it worth it.
+
+```
+GET: /api-docs
+```
 
 
 
